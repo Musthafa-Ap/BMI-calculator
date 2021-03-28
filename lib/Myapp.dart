@@ -46,7 +46,7 @@ class _MyappState extends State<Myapp> {
                 height: 380,
                 child: Column(children: [
                   Text("Choose Data",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.green),),
-                  SizedBox(height: 40),
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -55,7 +55,7 @@ class _MyappState extends State<Myapp> {
                       Text("185 cm",style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),)
                     ],
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(height: 10,),
                   Slider(
                     value: _height,
                     min: 0,
@@ -70,7 +70,7 @@ class _MyappState extends State<Myapp> {
                     activeColor: Colors.black,
                     inactiveColor: Colors.blueGrey,
                   ),
-                  SizedBox(height: 40),
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -78,7 +78,7 @@ class _MyappState extends State<Myapp> {
                       Text("Weight : ",style: TextStyle(fontSize: 25,color: Colors.black),),
                       Text("85Kg",style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),)
                     ],
-                  ),SizedBox(height: 15,),
+                  ),SizedBox(height: 10,),
                   Slider(
                     value: _weight,
                     min: 0,
@@ -93,7 +93,17 @@ class _MyappState extends State<Myapp> {
                     activeColor: Colors.black,
                     inactiveColor: Colors.blueGrey,
                   ),
+SizedBox(height: 15,),
+FlatButton(
+  onPressed: (){
 
+  },
+  padding: EdgeInsets.symmetric(horizontal: 110,vertical: 15),
+  child: Text("Calculate",style: TextStyle(fontSize: 20),),
+  color: Colors.green,
+  shape: StadiumBorder(),
+  textColor: Colors.white,
+)
                 ],),
               ),
             ],

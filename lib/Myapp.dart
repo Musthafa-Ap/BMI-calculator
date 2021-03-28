@@ -5,6 +5,8 @@ class Myapp extends StatefulWidget {
 }
 
 class _MyappState extends State<Myapp> {
+  double _height=100;
+  double _weight=50;
   @override
   Widget build(BuildContext context) {
 
@@ -37,7 +39,63 @@ class _MyappState extends State<Myapp> {
                     )
                   ],
                 ),
-              )
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 15),
+                width: double.infinity,
+                height: 380,
+                child: Column(children: [
+                  Text("Choose Data",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.green),),
+                  SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+
+                      Text("Height : ",style: TextStyle(fontSize: 25,color: Colors.black),),
+                      Text("185 cm",style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),)
+                    ],
+                  ),
+                  SizedBox(height: 15,),
+                  Slider(
+                    value: _height,
+                    min: 0,
+                    max: 250,
+                    onChanged: (height){
+                      setState(() {
+                        _height=height;
+                      });
+                    },
+                    divisions: 250,
+                    label: "$_height",
+                    activeColor: Colors.black,
+                    inactiveColor: Colors.blueGrey,
+                  ),
+                  SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+
+                      Text("Weight : ",style: TextStyle(fontSize: 25,color: Colors.black),),
+                      Text("85Kg",style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),)
+                    ],
+                  ),SizedBox(height: 15,),
+                  Slider(
+                    value: _weight,
+                    min: 0,
+                    max: 150,
+                    onChanged: (weight){
+                      setState(() {
+                        _weight=weight;
+                      });
+                    },
+                    divisions: 250,
+                    label: "$_weight",
+                    activeColor: Colors.black,
+                    inactiveColor: Colors.blueGrey,
+                  ),
+
+                ],),
+              ),
             ],
           ),
         ),

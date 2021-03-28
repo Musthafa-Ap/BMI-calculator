@@ -7,6 +7,8 @@ class Myapp extends StatefulWidget {
 class _MyappState extends State<Myapp> {
   double _height=100;
   double _weight=50;
+  int _bmi=0;
+  String _condition = 'select data';
   @override
   Widget build(BuildContext context) {
 
@@ -30,11 +32,11 @@ class _MyappState extends State<Myapp> {
                   children: [
                     Text("BMI",style: TextStyle(fontSize: 60,fontWeight: FontWeight.bold,color: Colors.white),),
                     Text("Calculator",style: TextStyle(fontSize: 40,color: Colors.white),),
-                    Container( width:double.infinity,child: Text("25.5",style: TextStyle(fontSize: 50,fontWeight: FontWeight.bold,color: Colors.white),textAlign: TextAlign.right,)),
+                    Container( width:double.infinity,child: Text("$_bmi",style: TextStyle(fontSize: 50,fontWeight: FontWeight.bold,color: Colors.white),textAlign: TextAlign.right,)),
                     Row(
                       children: [
                         Text("Condition : ",style: TextStyle(fontSize: 25,color: Colors.white),),
-                        Text("Overweight",style: TextStyle(fontSize: 30,color: Colors.white,fontWeight: FontWeight.bold),)
+                        Text("$_condition",style: TextStyle(fontSize: 30,color: Colors.white,fontWeight: FontWeight.bold),)
                       ],
                     )
                   ],
@@ -52,7 +54,7 @@ class _MyappState extends State<Myapp> {
                     children: [
 
                       Text("Height : ",style: TextStyle(fontSize: 25,color: Colors.black),),
-                      Text("185 cm",style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),)
+                      Text("$_height cm",style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),)
                     ],
                   ),
                   SizedBox(height: 10,),
@@ -60,7 +62,7 @@ class _MyappState extends State<Myapp> {
                     value: _height,
                     min: 0,
                     max: 250,
-                    onChanged: (height){
+                    onChanged: ( height){
                       setState(() {
                         _height=height;
                       });
@@ -76,7 +78,7 @@ class _MyappState extends State<Myapp> {
                     children: [
 
                       Text("Weight : ",style: TextStyle(fontSize: 25,color: Colors.black),),
-                      Text("85Kg",style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),)
+                      Text("$_weight Kg",style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),)
                     ],
                   ),SizedBox(height: 10,),
                   Slider(
@@ -88,7 +90,7 @@ class _MyappState extends State<Myapp> {
                         _weight=weight;
                       });
                     },
-                    divisions: 250,
+                    divisions: 150,
                     label: "$_weight",
                     activeColor: Colors.black,
                     inactiveColor: Colors.blueGrey,
@@ -96,7 +98,22 @@ class _MyappState extends State<Myapp> {
 SizedBox(height: 15,),
 FlatButton(
   onPressed: (){
+setState(() {
+  _bmi=(_weight/((_height/100)*(_height/100))).round().toInt();
+    if(_bmi>=18.5 && _bmi<=25)
+    {_condition='Normal';}
+    else if(_bmi>25&&_bmi<=30){
+      _condition='Overweight';
+    }
+    else if(_bmi>30){
+      _condition='Obesity';
+    }
+    else {
+      _condition='Underweight';
+    }
 
+}
+  );
   },
   padding: EdgeInsets.symmetric(horizontal: 110,vertical: 15),
   child: Text("Calculate",style: TextStyle(fontSize: 20),),
